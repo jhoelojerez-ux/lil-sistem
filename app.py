@@ -25,8 +25,8 @@ horizonte = st.sidebar.slider("Horizonte de Pronóstico (Días)", min_value=5, m
 def descargar_datos(periodo_input):
     eurusd_ticker = 'EURUSD=X'
     vix_ticker = '^VIX'
-    eurusd = yf.download(eurusd_ticker, period=periodo_input, interval='1d')
-    vix = yf.download(vix_ticker, period=periodo_input, interval='1d')
+    eurusd = yf.download(eurusd_ticker, period=periodo_input, interval='1d', multi_level_index =False)
+    vix = yf.download(vix_ticker, period=periodo_input, interval='1d', multi_level_index =False)
     return eurusd, vix
 
 eurusd_data, vix_data = descargar_datos(periodo)
