@@ -39,10 +39,8 @@ eurusd_log_returns = np.log(eurusd_close / eurusd_close.shift(1))
 vix_log_returns = np.log(vix_close / vix_close.shift(1))
 
 # Unir dataframes limpiando NaNs
-combined_returns = pd.concat([
-    eurusd_log_returns.rename(columns={'EURUSD=X': 'EURUSD_Log_Returns'}),
-    vix_log_returns.rename(columns={'^VIX': 'VIX_Log_Returns'})
-], axis=1).dropna()
+combined_returns = pd.concat([eurusd_log_returns, vix_log_returns], axis=1).dropna()
+combined_returns.columns = ['EURUSD_Log_Returns', 'VIX_Log_Returns']
 
 # Pestañas principales
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
